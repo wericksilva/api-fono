@@ -16,12 +16,12 @@ import br.com.app.fono.apifonoapp.service.PacienteService;
 
 
 @RestController
+@RequestMapping("/pacientes")
 public class PacienteController {
 	
 	@Autowired
 	PacienteService pacienteService;
 	
-	// End points
 	@RequestMapping(method = RequestMethod.GET, value = "/pacientes", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<Paciente>> buscarTodosClientes() {
 		Collection<Paciente> buscadosTodosPacientes = pacienteService.buscarTodos();
