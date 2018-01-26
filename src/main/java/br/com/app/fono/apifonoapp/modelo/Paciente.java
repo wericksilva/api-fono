@@ -25,6 +25,26 @@ public class Paciente {
 
 	private String email;
 	
+	private String senha;
+	
+	private String confirmarSenha;
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getConfirmarSenha() {
+		return confirmarSenha;
+	}
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
+	}
+
 	private Integer telefone;
 	
 	private Date dataNascimento;

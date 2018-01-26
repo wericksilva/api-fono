@@ -18,4 +18,11 @@ public class PacienteService {
 		return pacienteRepository.findAll();
 	}
 
+	public Paciente salvar(Paciente paciente){
+		return pacienteRepository.save(paciente);
+	}
+	
+	public Paciente buscarPorEmaileSenha(Paciente paciente){
+		return pacienteRepository.findByEmailAndSenhaContaining(paciente.getEmail(), paciente.getSenha()).get(0);
+	}
 }
