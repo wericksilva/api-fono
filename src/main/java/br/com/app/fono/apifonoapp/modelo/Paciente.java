@@ -1,6 +1,7 @@
 package br.com.app.fono.apifonoapp.modelo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.app.fono.apifonoapp.enums.EnumSexo;
 
@@ -23,31 +29,17 @@ public class Paciente {
 	@Enumerated(EnumType.STRING)
 	private EnumSexo sexo;
 
+	@Temporal(TemporalType.DATE)
+	private Date dataNascimento;
+	
+	private Integer telefone;
 	private String email;
 	
-	private String senha;
-	
-	private String confirmarSenha;
-	
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getConfirmarSenha() {
-		return confirmarSenha;
-	}
-
-	public void setConfirmarSenha(String confirmarSenha) {
-		this.confirmarSenha = confirmarSenha;
-	}
-
-	private Integer telefone;
-	
-	private Date dataNascimento;
+	private String observacoes;
+		 
+	@JsonManagedReference
+	@OneToMany(mappedBy="paciente")
+	private List<Consulta> consulta;
 
 	public Long getId() {
 		return id;
@@ -95,6 +87,34 @@ public class Paciente {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	/**
+	 * @return the observacoes
+	 */
+	public String getObservacoes() {
+		return observacoes;
+	}
+
+	/**
+	 * @param observacoes the observacoes to set
+	 */
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
+	}
+
+	/**
+	 * @return the consulta
+	 */
+	public List<Consulta> getConsulta() {
+		return consulta;
+	}
+
+	/**
+	 * @param consulta the consulta to set
+	 */
+	public void setConsulta(List<Consulta> consulta) {
+		this.consulta = consulta;
 	}
 
 	
